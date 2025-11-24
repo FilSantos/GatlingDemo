@@ -16,7 +16,7 @@ jobs:
       - name: Run Gatling Tests
         run: |
           sbt gatling:test
-          ls -R -la target/
+          ls -R -la .
 
       - name: Upload Gatling Reports
         uses: actions/upload-artifact@v4
