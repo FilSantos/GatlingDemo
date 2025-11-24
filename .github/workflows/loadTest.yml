@@ -28,7 +28,9 @@ jobs:
 
       - name: Run Gatling Tests
         run: |
+          ls -la
           sbt gatling:test
+          ls -la
 
       - name: Cache SBT
         uses: actions/cache@v4
