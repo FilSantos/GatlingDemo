@@ -7,29 +7,30 @@ jobs:
   loadtest:
     runs-on: ubuntu-latest
     container:
-      image: eclipse-temurin:17-jdk
-      options: --user root
+    #  image: eclipse-temurin:17-jdk
+    image: sbtscala/scala-sbt:eclipse-temurin-jammy-17.0.5_8_1.9.0_2.12.18
+    #  options: --user root
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install curl, unzip, bash, etc.
-        run: |
-          apt-get update
-          apt-get install -y curl unzip
+      #- name: Install curl, unzip, bash, etc.
+      #  run: |
+      #    apt-get update
+      #    apt-get install -y curl unzip
 
       - name: Install SBT (manual)
-        run: |
-          curl -L -o sbt.tgz https://github.com/sbt/sbt/releases/download/v1.9.9/sbt-1.9.9.tgz
-          tar -xzf sbt.tgz
-          mv sbt /usr/local/sbt
-          ln -s /usr/local/sbt/bin/sbt /usr/local/bin/sbt
+      #  run: |
+      #    curl -L -o sbt.tgz https://github.com/sbt/sbt/releases/download/v1.9.9/sbt-1.9.9.tgz
+      #    tar -xzf sbt.tgz
+      #    mv sbt /usr/local/sbt
+      #    ln -s /usr/local/sbt/bin/sbt /usr/local/bin/sbt
           sbt --version
 
       - name: Run Gatling Tests
         run: |
           sbt gatling:test
-          ls -R -la .
+          ls -R -la target/
 
       - name: Upload Gatling Reports
         uses: actions/upload-artifact@v4
