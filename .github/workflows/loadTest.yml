@@ -8,9 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: sbtscala/scala-sbt:eclipse-temurin-jammy-17.0.5_8_1.9.0_2.12.18
-    #  image: eclipse-temurin:17-jdk
-    
-    #  options: --user root
+      # eclipse-temurin:17-jdk
+      options: --user root
 
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +20,7 @@ jobs:
       #    apt-get install -y curl unzip
 
       - name: Install SBT (manual)
-      #  run: |
+        run: |
       #    curl -L -o sbt.tgz https://github.com/sbt/sbt/releases/download/v1.9.9/sbt-1.9.9.tgz
       #    tar -xzf sbt.tgz
       #    mv sbt /usr/local/sbt
