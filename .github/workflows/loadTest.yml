@@ -18,8 +18,8 @@ jobs:
 
       - name: Install SBT
         uses: olafurpg/setup-scala@v14
-        with:
-          java-version: "adopt@1.17"
+        #with:
+        #  java-version: "adopt@1.17"
 
       - name: Run Gatling Tests
         run: sbt gatling:test
